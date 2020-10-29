@@ -45,11 +45,30 @@ exports.findAll = (req, res) => {
 
 // Find a single person with a Id
 exports.findOne = (req, res) => {
+    Person.findById(req.params.Id)
+    .then(person => {
+        if(!person) {
+            return res.status(404).send({
+                message: "person not found with id " + req.params.Id
+            });            
+        }
+        res.send(person);
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "person not found with id " + req.params.Id
+            });                
+        }
+        return res.status(500).send({
+            message: "Error retrieving person with id " + req.params.Id
+        });
+    });
 
 };
 
 // Update a person identified by the Id in the request
 exports.update = (req, res) => {
+
 
 };
 

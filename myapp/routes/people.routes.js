@@ -12,7 +12,7 @@ let {create,findAll,findOne,update} = require('../controllers/people.controller'
    router.get('/people', findAll);
 
    // Retrieve a single person with Id
-   router.get('/people/:peopleId', findOne);
+   router.get('/people/:Id', findOne);
 
    // Update a Person with Id
    router.put('/people/:peopleId',update);
