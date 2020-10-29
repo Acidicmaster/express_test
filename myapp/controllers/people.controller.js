@@ -32,6 +32,14 @@ const person = new Person({
 
 // Retrieve and return all  from the database.
 exports.findAll = (req, res) => {
+    People.find()
+    .then(person => {
+        res.send(person).sort(['updatedAt', 1])
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving People."
+        });
+    });
 
 };
 

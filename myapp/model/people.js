@@ -14,7 +14,8 @@ const PeopleSchema = mongoose.Schema({
     age : {
         type : Number,
         required : true,
-        max : 150
+        max : 150,
+        min : 1
     },
     employmentStatus: {
         type: String,
