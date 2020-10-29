@@ -15,7 +15,7 @@ let {create,findAll,findOne,update} = require('../controllers/people.controller'
    router.get('/people/:Id', findOne);
 
    // Update a Person with Id
-   router.put('/people/:peopleId',update);
+   router.put('/people/:Id',update);
 
    // Delete a person with Id
   // router.delete('/people/:peopleId', delete);

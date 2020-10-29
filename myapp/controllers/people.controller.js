@@ -68,7 +68,40 @@ exports.findOne = (req, res) => {
 
 // Update a person identified by the Id in the request
 exports.update = (req, res) => {
+// Validate Request
+if(!req.body) {
+    return res.status(400).send({
+        message: "Data content can not be empty"
+    });
+}
 
+// Find Person and update it with the request body
+Person.findByIdAndUpdate(req.params.Id, {
+    name : req.body.name,
+    occupation : req.body.occupation,
+    age : req.body.age,
+    employmentStatus : req.body.employmentStatus,
+    citizen : req.body.citizen,
+    gender : req.body.gender
+   
+}, {new: true})
+.then(person => {
+    if(!person) {
+        return res.status(404).send({
+            message: "Person not found with id " + req.params.Id
+        });
+    }
+    res.send(person);
+}).catch(err => {
+    if(err.kind === 'ObjectId') {
+        return res.status(404).send({
+            message: "Person not found with id " + req.params.Id
+        });                
+    }
+    return res.status(500).send({
+        message: "Error updating Person with id " + req.params.Id
+    });
+});
 
 };
 
