@@ -11,20 +11,23 @@ const PeopleSchema = mongoose.Schema({
         required : true,
         min : 6
     },
-    Age : {
+    age : {
         type : Number,
         required : true,
-        max : 3
+        max : 150
     },
-    emplomentStatus: {
+    employmentStatus: {
         type: String,
         enum : ['employed', 'self-employed','unemployed','student'],
         default: 'employed'
     },
-    email : {
-        type : String,
-        required : true,
-        max : 240
+    citizen : {
+        type : Boolean
+    },
+    gender: {
+        type: String,
+        enum : ['male', 'female'],
+        default: 'male'
     },
    
    
