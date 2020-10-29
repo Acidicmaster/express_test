@@ -1,22 +1,22 @@
 var express = require('express');
 var router = express.Router();
-const people = require('../controllers/people.controller')
+let {create,findAll,findOne,update} = require('../controllers/people.controller')
 
 
 
 
    // Create a new Person
-   router.post('/people', people.create);
+   router.post('/people', create);
 
    // Retrieve all 
-   router.get('/people', people.findAll);
+   router.get('/people', findAll);
 
    // Retrieve a single person with Id
-   router.get('/people/:peopleId', people.findOne);
+   router.get('/people/:peopleId', findOne);
 
    // Update a Person with Id
-   router.put('/people/:peopleId', people.update);
+   router.put('/people/:peopleId',update);
 
    // Delete a person with Id
-   router.delete('/people/:peopleId', people.delete);
+  // router.delete('/people/:peopleId', delete);
 module.exports = router;

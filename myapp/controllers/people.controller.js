@@ -32,7 +32,7 @@ const person = new Person({
 
 // Retrieve and return all  from the database.
 exports.findAll = (req, res) => {
-    People.find()
+    Person.find()
     .then(person => {
         res.send(person).sort(['updatedAt', 1])
     }).catch(err => {
