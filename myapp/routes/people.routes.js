@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-let {create,findAll,findOne,update} = require('../controllers/people.controller')
+let {create,findAll,findOne,update,deletes} = require('../controllers/people.controller')
 
 
 
@@ -18,5 +18,5 @@ let {create,findAll,findOne,update} = require('../controllers/people.controller'
    router.put('/people/:Id',update);
 
    // Delete a person with Id
-  // router.delete('/people/:peopleId', delete);
+  router.delete('/people/:Id', deletes);
 module.exports = router;

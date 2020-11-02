@@ -106,6 +106,24 @@ Person.findByIdAndUpdate(req.params.Id, {
 };
 
 // Delete a person with the specified noteId in the request
-exports.delete = (req, res) => {
+exports.deletes = (req, res) => {
+    Person.findByIdAndRemove(req.params.Id)
+    .then(person => {
+        if(!person) {
+            return res.status(404).send({
+                message: "Person not found with id " + req.params.Id
+            });
+        }
+        res.send({message: "Person deleted successfully!"});
+    }).catch(err => {
+        if(err.kind === 'ObjectId' || err.name === 'NotFound') {
+            return res.status(404).send({
+                message: "Person not found with id " + req.params.Id
+            });                
+        }
+        return res.status(500).send({
+            message: "Could not delete person with id " + req.params.Id
+        });
+    });
 
 };
